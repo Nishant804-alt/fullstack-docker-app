@@ -1,20 +1,18 @@
-# Use Node.js base image
+# Use an official Node.js image
 FROM node:14-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files and install dependencies
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy all React app files
+# Copy all frontend files
 COPY . .
 
-# Expose React port
+# Expose the React port
 EXPOSE 3000
 
-# Start React app
+# Start the React app
 CMD ["npm", "start"]
